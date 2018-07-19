@@ -1,0 +1,39 @@
+{
+	"ImportPath": "github.com/atuldaemon/stringsvc",
+	"GoVersion": "go1.10",
+	"GodepVersion": "v80",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/go-kit/kit/endpoint",
+			"Comment": "v0.7.0-25-ge2d71a0",
+			"Rev": "e2d71a06a40aa95cb82ccd72e854893612c02db7"
+		},
+		{
+			"ImportPath": "github.com/go-kit/kit/log",
+			"Comment": "v0.7.0-25-ge2d71a0",
+			"Rev": "e2d71a06a40aa95cb82ccd72e854893612c02db7"
+		},
+		{
+			"ImportPath": "github.com/go-kit/kit/transport/http",
+			"Comment": "v0.7.0-25-ge2d71a0",
+			"Rev": "e2d71a06a40aa95cb82ccd72e854893612c02db7"
+		},
+		{
+			"ImportPath": "github.com/go-logfmt/logfmt",
+			"Comment": "v0.3.0",
+			"Rev": "390ab7935ee28ec6b286364bba9b4dd6410cb3d5"
+		},
+		{
+			"ImportPath": "github.com/go-stack/stack",
+			"Comment": "v1.7.0",
+			"Rev": "259ab82a6cad3992b4e21ff5cac294ccb06474bc"
+		},
+		{
+			"ImportPath": "github.com/kr/logfmt",
+			"Rev": "b84e30acd515aadc4b783ad4ff83aff3299bdfe0"
+		}
+	]
+}
