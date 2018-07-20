@@ -2,34 +2,11 @@ package main
 
 import (
 	"context"
-	"strings"
-	"errors"
 	"github.com/go-kit/kit/endpoint"
 	"net/http"
-	"log"
-	httptransport "github.com/go-kit/kit/transport/http"
 	"encoding/json"
 )
 
-type StringService interface {
-	Uppercase(context.Context, string) (string, error)
-	Count(context.Context, string) int
-}
-
-type stringService struct{}
-
-func (stringService) Uppercase(_ context.Context, s string) (string, error) {
-	if s == "" {
-		return "", ErrEmpty
-	}
-	return strings.ToUpper(s), nil
-}
-
-func (stringService) Count(_ context.Context, s string) int {
-	return len(s)
-}
-
-var ErrEmpty = errors.New("Empty string")
 
 type uppercaseRequest struct {
 	S string `json:"s"`
@@ -67,25 +44,6 @@ func makeCountEndpoint(svc StringService) endpoint.Endpoint {
 	}
 }
 
-func main() {
-	svc := stringService{}
-
-	uppercaseHandler := httptransport.NewServer(
-		makeUppercaseEndpoint(svc),
-		decodeUppercaseRequest,
-		encodeResponse,
-	)
-
-	countHandler := httptransport.NewServer(
-		makeCountEndpoint(svc),
-		decodeCountRequest,
-		encodeResponse,
-	)
-
-	http.Handle("/uppercase", uppercaseHandler)
-	http.Handle("/count", countHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
-}
 
 func decodeUppercaseRequest(_ context.Context, r *http.Request) (interface{}, error) {
 	var request uppercaseRequest
